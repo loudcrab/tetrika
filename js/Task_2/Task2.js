@@ -32,7 +32,7 @@ let additionOfWord
 //Проверка на существование файла
 
 
-let file = fs.readFileSync('na2mes.txt', 'utf8')
+let file = fs.readFileSync('names.txt', 'utf8')
 console.log(sumOfAllLetters(file.split(',').sort()))
 
 
