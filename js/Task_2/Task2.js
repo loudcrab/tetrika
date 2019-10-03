@@ -10,20 +10,16 @@ let getAdditionOfWord = (letter) => {
     let additionOfWord = 0
     // Удаляем ковычки из начала и конца слова
     letter = letter.replace('"', "").replace('"', "")
-    for (let i = 0; i < letter.length; i++) {
-
-        additionOfWord += getNumberOfLetter(letter.charAt(i))
-
-    }
+    for (let i = 0; i < letter.length; i++)  additionOfWord += getNumberOfLetter(letter.charAt(i))
     return additionOfWord
 }
 //Считает сумму произведения положения имени и сумму счета букв
 let sumOfAllLetters = (file, sum, iterator) => {
-    for (let letter in file) {
+    for (let letter of file) {
 
 
         iterator++
-        let MultiplicationOfWord = getAdditionOfWord(file[letter])
+        let MultiplicationOfWord = getAdditionOfWord(letter)
         sum = sum + (MultiplicationOfWord * iterator)
     }
     return sum
