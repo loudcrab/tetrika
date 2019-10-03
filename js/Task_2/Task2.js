@@ -20,6 +20,8 @@ let getAdditionOfWord = (letter) => {
 //Считает сумму произведения положения имени и сумму счета букв
 let sumOfAllLetters = (file, sum, iterator) => {
     for (let letter in file) {
+
+
         iterator++
         let MultiplicationOfWord = getAdditionOfWord(file[letter])
         sum = sum + (MultiplicationOfWord * iterator)
