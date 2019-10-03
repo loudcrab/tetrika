@@ -4,18 +4,17 @@ let searchPairs = (array, N) => {
 
         for (let j = i + 1; j < array.length; j++) {
             if ((array[i] + array[j]) == N) {
-                if(IsOnArray(answer, array[i], array[j])) answer.push([array[i], array[j]])
+                if (IsOnArray(answer, array[i], array[j])) answer.push([array[i], array[j]])
             }
         }
-
     }
 
     return answer
 }
 //Проверка на уникальные пары
 let IsOnArray = (answer, i, j) => {
-    for (let pair in answer) {
-        if (answer[pair][0] === i || answer[pair][1] === i) {
+    for (let pair of answer) {
+        if (pair[0] === i || pair[1] === i) {
             return false
         }
     }
