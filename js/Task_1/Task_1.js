@@ -12,7 +12,7 @@ let searchPairs = (array, N) => {
     return answer
 }
 //Проверка на уникальные пары
-let IsOnArray = (answer, i, j) => {
+let IsOnArray = (answer, i) => {
     for (let pair of answer) {
         if (pair[0] === i || pair[1] === i) {
             return false
@@ -20,7 +20,7 @@ let IsOnArray = (answer, i, j) => {
     }
     return true
 }
-const arr = [1, 2, 6, 5, 3, 4, 7, 8];
+const arr = [1, 2, 6, 5, 3, 4, 7, 8, 1 ,4];
 const k = 5;
 
 

@@ -1,46 +1,39 @@
+//fs модуль node.js для чтения файлов
+let fs = require('fs');
+
 //Функция считает какая по счету буква в алфавите
-let getNumberOfLetter = (let) => {
+let getNumberOfChar = (char) => {
     let startPos = 'a'.charCodeAt(0),
-        currentPos = let.toLowerCase().charCodeAt(0);
+        currentPos = char.toLowerCase().charCodeAt(0);
     return (currentPos - startPos + 1)
 }
 
 //Функция складывает getNumberOfLetter
-let getAdditionOfWord = (letter) => {
-    let additionOfWord = 0
+let getAdditionOfWord = (word) => {
+    additionOfWord = 0
     // Удаляем ковычки из начала и конца слова
-    letter = letter.replace('"', "").replace('"', "")
-    for (let i = 0; i < letter.length; i++)  additionOfWord += getNumberOfLetter(letter.charAt(i))
+    word = word.replace(/"/g, '')
+
+    for (let i = 0; i < word.length; i++) additionOfWord += getNumberOfChar(word.charAt(i))
     return additionOfWord
 }
 //Считает сумму произведения положения имени и сумму счета букв
-let sumOfAllLetters = (file, sum, iterator) => {
-    for (let letter of file) {
-
-
+let sumOfAllLetters = (file) => {
+    for (let word of file) {
         iterator++
-        let MultiplicationOfWord = getAdditionOfWord(letter)
-        sum = sum + (MultiplicationOfWord * iterator)
+        sum += (getAdditionOfWord(word) * iterator)
     }
     return sum
 }
 
 let iterator = 0
 let sum = 0
-//fs модуль node.js для чтения файлов
-let fs = require('fs');
-
+let additionOfWord
 //Проверка на существование файла
-fs.exists('names.txt', (exists) => {
-    if(exists){
-        //Мы считывает файл, далее сплитим в массив и сортируем
-        let file = fs.readFileSync('names.txt', 'utf8').split(',').sort();
-        console.log(sumOfAllLetters(file, sum, iterator))
-    } else {
-        console.log("Файл не найден")
-    }
-});
 
+
+let file = fs.readFileSync('na2mes.txt', 'utf8')
+console.log(sumOfAllLetters(file.split(',').sort()))
 
 
 
